@@ -1,0 +1,1 @@
+elasticSearchURL='search-mx-news-online-dev-vgoagyua54cwn35gjb5acqlroi.ap-northeast-2.es.amazonaws.com'
