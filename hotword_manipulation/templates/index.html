@@ -36,23 +36,27 @@
                         <td>{{ result.query_type}}</td>
                         <td>{{ result.date_str}}</td>
                         <td>
-                            <a class="btn btn-danger" href="">移除</a>
+                            <a class="btn btn-danger" href="{% url 'manipulation:pullblack' %}">移除</a>
                         </td>
                     </tr>
                 {% endfor %}
             </table>
         </div>
+        <br>
         <hr>
         <div>
-            <h3>Blacklist</h3>
+            <h2 >Blacklist</h2>
+            <br>
         </div>
         <div>
             {% for result in blackResultList %}
-                <tr>
-                    <td>{{ result.query}}
-                        <a class="btn btn-warning" href="">恢复</a>
-                    </td>
-                </tr>
+                <span style="margin-right: 10px">
+                    <tr>
+                        <td>{{ result.query}}
+                            <a class="btn btn-warning btn-sm" href="">恢复</a>
+                        </td>
+                    </tr>
+                </span>
             {% endfor %}
         </div>
     </div>
