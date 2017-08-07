@@ -21,5 +21,5 @@ class HotWordModel(object):
         self.setES_CLIENT()
         query_string = "{\"query\": {\"match_all\": {}}}"
         res = self._es_client.search(index="hotword", body=query_string)
-        ss = res.get("hits").get("hits")[0].get("_source")
+        ss = res.get("hits").get("hits")
         return ss
