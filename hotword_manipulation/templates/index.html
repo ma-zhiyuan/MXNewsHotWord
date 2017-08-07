@@ -2,9 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Hot Word Manipulation</title>
 </head>
 <body>
-    {{ hotword }}
+    <div class="container">
+        <div>
+            <h1>Hot Word Manipulation</h1>
+        </div>
+        <div>
+            <div class="row col-md-12 col-md-offset-8" style="margin-bottom: 10px">
+                <div class="col-xs-2">
+                    <input type="text" class="form-control" placeholder="关键词">
+                </div>
+                <div class="col-xs-1">
+                    <input type="text" class="form-control" placeholder="位置">
+                </div>
+                <a class="btn btn-primary" href="">插入</a>
+            </div>
+            <table class="table table-hover table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Hotword</th>
+                    <th>Query_type</th>
+                    <th>Date</th>
+                    <th>Manipulation</th>
+                </tr>
+                {% for result in topResultList %}
+                    <tr>
+                        <td>{{ result.position}}</td>
+                        <td>{{ result.query}}</td>
+                        <td>{{ result.query_type}}</td>
+                        <td>{{ result.date_str}}</td>
+                        <td>
+                            <a class="btn btn-danger" href="">移除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <hr>
+        <div>
+            <h3>Blacklist</h3>
+        </div>
+        <div>
+            {% for result in blackResultList %}
+                <tr>
+                    <td>{{ result.query}}
+                        <a class="btn btn-warning" href="">恢复</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </div>
+    </div>
+
 </body>
 </html>
