@@ -37,11 +37,15 @@ class HotWordModel:
         return topResultList,blackResultList
 
     def pullblack(self,queryword):
-        #self.setES_CLIENT()
-        word = Word()
+        self.setES_CLIENT()
+        word = Word('','','','','','')
         queryjson = '{"query":{"match":{"query":"'+queryword+'"}}}'
-        wordjson = self._es_client.search(index="hotword", body=queryjson).get("hits").get("hits")[0].get("_source")
-        word.__dict__ = json.loads(wordjson)
+        res = self._es_client.search(index="hotword", body=queryjson)
+        wordjson = res.get("hits").get("hits")[0].get("_source")
+        s = json.dumps(wordjson)
+        ss = s.replace("'","\"")
+        word.__dict__ = json.loads(ss)
+        print word
         word.valid = 1
         m = hashlib.md5()
         m.update(queryword)
@@ -53,11 +57,12 @@ class HotWordModel:
 
 
 class Word:
-    def __init__(self):
-        self.query = ''
-        self.query_type = ''
-        self.position = ''
-        self.date = ''
-        self.date_str = ''
-        self.valid = ''
-
+    def __init__(self,query,query_type,position,date,date_str,valid):
+        self.query = query
+        self.query_type = query_type
+        self.position = position
+        self.date = date
+        self.date_str = date_str
+        self.valid = valid
+    def __str__(self):
+        return '\n'.join(['%s:%s' % item for item in self.__dict__.items()])
