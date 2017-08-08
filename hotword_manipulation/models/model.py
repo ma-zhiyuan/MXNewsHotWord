@@ -9,13 +9,13 @@ class HotWordModel(object):
         self._es_host='search-mx-news-online-dev-vgoagyua54cwn35gjb5acqlroi.ap-northeast-2.es.amazonaws.com'
         self._es_port=443
 
-    def setES_CLIENT(self):
-       self._es_client = Elasticsearch(
-            hosts=[{'host': self._es_host, 'port': self._es_port}],
-            use_ssl=True,
-            verify_certs=True,
-            connection_class=RequestsHttpConnection
-        )
+    #def setES_CLIENT(self):
+    #   self._es_client = Elasticsearch(
+    #      hosts=[{'host': self._es_host, 'port': self._es_port}],
+    #      use_ssl=True,
+    #      verify_certs=True,
+    #      connection_class=RequestsHttpConnection
+    #    )
 
     def query_item(self):
         self.setES_CLIENT()
@@ -33,5 +33,7 @@ class HotWordModel(object):
             blackResultList.append(res.get("_source"))
         return topResultList,blackResultList
 
-    def pullblack(self):
-        pass
+    def pullblack(self,queryword):
+        self.setES_CLIENT()
+        pullstring = ""
+

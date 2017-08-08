@@ -36,7 +36,7 @@
                         <td>{{ result.query_type}}</td>
                         <td>{{ result.date_str}}</td>
                         <td>
-                            <a class="btn btn-danger" href="{% url 'manipulation:pullblack' %}">移除</a>
+                            <a class="btn btn-danger" href="{% url 'manipulation:pullblack' result.query %}">移除</a>
                         </td>
                     </tr>
                 {% endfor %}
