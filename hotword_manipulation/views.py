@@ -17,5 +17,11 @@ def pullblack(request,queryword):
     topResultList,blackResultList = hotWord.query_item()
     return render(request,'index.html',{'topResultList':topResultList,'blackResultList':blackResultList})
 
+def recovery(request,queryword):
+    hotWord = HotWordModel()
+    hotWord.recovery(queryword)
+    topResultList, blackResultList = hotWord.query_item()
+    return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
+
 if __name__ == '__main__':
     index("")

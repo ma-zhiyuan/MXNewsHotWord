@@ -53,7 +53,7 @@
                 <span style="margin-right: 10px">
                     <tr>
                         <td>{{ result.query}}
-                            <a class="btn btn-warning btn-sm" href="">恢复</a>
+                            <a class="btn btn-warning btn-sm" href="{% url 'manipulation:recovery' result.query %}">恢复</a>
                         </td>
                     </tr>
                 </span>
