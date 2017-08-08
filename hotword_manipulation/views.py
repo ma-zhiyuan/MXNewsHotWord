@@ -1,6 +1,6 @@
 #-*- coding: UTF-8 -*-
 import json
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from hotword_manipulation.models.model import HotWordModel
 
 
@@ -20,6 +20,16 @@ def pullblack(request,queryword):
 def recovery(request,queryword):
     hotWord = HotWordModel()
     hotWord.recovery(queryword)
+    topResultList, blackResultList = hotWord.query_item()
+    return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
+
+def insertword(request):
+    if request.POST:
+        word = request.POST['word']
+        ind = request.POST['index']
+        if word.strip()!='' & ind.strip()!='':
+            hotWord = HotWordModel()
+            hotWord.insertword(word,ind)
     topResultList, blackResultList = hotWord.query_item()
     return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
 

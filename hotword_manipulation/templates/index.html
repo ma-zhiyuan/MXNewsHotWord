@@ -13,13 +13,16 @@
         </div>
         <div>
             <div class="row col-md-12 col-md-offset-8" style="margin-bottom: 10px">
-                <div class="col-xs-2">
-                    <input type="text" class="form-control" placeholder="关键词">
-                </div>
-                <div class="col-xs-1">
-                    <input type="text" class="form-control" placeholder="位置">
-                </div>
-                <a class="btn btn-primary" href="">插入</a>
+                <form action="/insertword" method="post">
+                    <div class="col-xs-2">
+                        <input type="text" class="form-control" name="word" placeholder="关键词">
+                    </div>
+                    <div class="col-xs-1">
+                        <input type="text" class="form-control" name="index" placeholder="位置">
+                    </div>
+                    <a class="btn btn-primary" type="submit">插入</a>
+                </form>
+                <p>{{ rlt }}</p>
             </div>
             <table class="table table-hover table-striped">
                 <tr>
