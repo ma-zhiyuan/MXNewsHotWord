@@ -15,25 +15,25 @@ def index(request):
 def pullblack(request,queryword):
     hotWord = HotWordModel()
     hotWord.pullblack(queryword)
-    time.sleep(0.5)
+    time.sleep(1)
     topResultList,blackResultList = hotWord.query_item()
     return render(request,'index.html',{'topResultList':topResultList,'blackResultList':blackResultList})
 
 def recovery(request,queryword):
     hotWord = HotWordModel()
     hotWord.recovery(queryword)
-    time.sleep(0.5)
+    time.sleep(1)
     topResultList, blackResultList = hotWord.query_item()
     return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
 
 def insertword(request):
+    hotWord = HotWordModel()
     if request.POST:
         word = request.POST['word']
         ind = request.POST['index']
         if word.strip()!='' and ind.strip()!='':
-            hotWord = HotWordModel()
             hotWord.insertword(word,ind)
-    time.sleep(0.5)
+    time.sleep(1)
     topResultList, blackResultList = hotWord.query_item()
     return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
 

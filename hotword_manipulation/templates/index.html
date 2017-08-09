@@ -5,15 +5,21 @@
     <!--Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <title>Hot Word Manipulation</title>
+    <style>
+        a:link{text-decoration:none;}
+        a:visited{text-decoration:none;}
+        a:hover{text-decoration:none;}
+        a:active{text-decoration:none;}
+    </style>
 </head>
 <body>
     <div class="container">
         <div>
-            <h1>Hot Word Manipulation</h1>
+            <h1><a href="/hotword/home">Hot Word Manipulation</a></h1>
         </div>
         <div>
             <div class="row col-md-12 col-md-offset-8" style="margin-bottom: 10px">
-                <form action="/insertword/" method="post">
+                <form action="/hotword/insertword/" method="post">
                     {% csrf_token %}
                     <div class="col-xs-2">
                         <input type="text" class="form-control" name="word" placeholder="关键词">

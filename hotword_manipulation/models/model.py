@@ -76,13 +76,13 @@ class HotWordModel:
         self.setES_CLIENT()
         word = Word('', '', '', '', '', '')
         word.query = inword
-        self.query_type = 'artificial'
+        word.query_type = 'artificial'
         word.position = ind
         word.date = time.strftime('%Y-%m-%d', time.localtime(time.time()))
         word.date_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
         word.valid = 0
         m = hashlib.md5()
-        m.update(word)
+        m.update(inword)
         md5word = m.hexdigest()
         insertstring = json.dumps(word.__dict__)
         self._es_client.index(index="hotword", doc_type="hotword", id=md5word, body=insertstring)
