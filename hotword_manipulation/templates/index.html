@@ -13,14 +13,15 @@
         </div>
         <div>
             <div class="row col-md-12 col-md-offset-8" style="margin-bottom: 10px">
-                <form action="/insertword" method="post">
+                <form action="/insertword/" method="post">
+                    {% csrf_token %}
                     <div class="col-xs-2">
                         <input type="text" class="form-control" name="word" placeholder="关键词">
                     </div>
                     <div class="col-xs-1">
                         <input type="text" class="form-control" name="index" placeholder="位置">
                     </div>
-                    <a class="btn btn-primary" type="submit">插入</a>
+                    <input class="btn btn-primary" type="submit" value="插入">
                 </form>
                 <p>{{ rlt }}</p>
             </div>
