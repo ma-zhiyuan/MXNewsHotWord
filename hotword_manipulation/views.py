@@ -30,7 +30,7 @@ def insertword(request):
     if request.POST:
         word = request.POST['word']
         ind = request.POST['index']
-        if word.strip()!='' & ind.strip()!='':
+        if word.strip()!='' and ind.strip()!='':
             hotWord = HotWordModel()
             hotWord.insertword(word,ind)
     time.sleep(0.5)
