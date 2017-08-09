@@ -34,7 +34,6 @@ def insertword(request):
             hotWord = HotWordModel()
             hotWord.insertword(word,ind)
     time.sleep(0.5)
-    #3
     topResultList, blackResultList = hotWord.query_item()
     return render(request, 'index.html', {'topResultList': topResultList, 'blackResultList': blackResultList})
 
